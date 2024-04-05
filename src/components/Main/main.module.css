@@ -1,0 +1,35 @@
+
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr minmax(500px, 520px);
+
+}
+
+.column {
+    border-right: 5px solid #272c34;
+    height: calc(100vh - 50px);
+    position: relative;
+    overflow: hidden;
+}
+.column:last-child {
+    border-right: none;
+}
+.jsxColumn {
+    padding: 0 10px;
+}
+
+.header {
+    width: 100%;
+    background-color: #272c34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-family: Fahkwang;
+}
+
+.headerText {
+    color: white;
+}
+

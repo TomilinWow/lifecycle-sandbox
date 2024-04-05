@@ -1,0 +1,16 @@
+.emptyBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+.trace {
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}

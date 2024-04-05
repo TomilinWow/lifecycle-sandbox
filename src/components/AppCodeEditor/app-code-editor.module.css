@@ -1,0 +1,11 @@
+
+.container {
+    border: 3px solid #bb976d;
+    border-radius: 8px;
+
+}
+.codeEditor {
+    height: calc(100vh - 120px);
+    color: #232323;
+    overflow: auto;
+}

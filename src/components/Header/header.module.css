@@ -1,0 +1,14 @@
+
+.header {
+    width: 100%;
+    background-color: #272c34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-family: Fahkwang;
+}
+.headerText {
+    color: aliceblue;
+
+}
