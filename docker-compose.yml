@@ -2,6 +2,6 @@ version: '3.8'
 services:
   web:
     build: .
-    image: nextjs-cicd-docker:1.0
+    image: nextjs-docker:1.0
     ports:
       - '3000:3000'
