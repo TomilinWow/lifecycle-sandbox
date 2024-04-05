@@ -21,6 +21,11 @@ body {
   background-color: #639cbd;
 }
 
+body.dark {
+  color: #dad9d9;
+  background-color: #1c576c;
+}
+
 
 a {
   color: inherit;
@@ -38,6 +43,12 @@ a {
   outline: 2px solid #bbbbbb;
 }
 
+body.dark .entries-wrapper {
+  background-color: #050101!important;
+  color: #939393;
+
+}
+
 .trace-log .header {
   color: white;
   display: flex;
@@ -45,4 +56,12 @@ a {
   align-content: center;
   margin: 10px;
 
+}
+.trace-log.dark {
+  background-color: #050101!important;
+}
+
+
+.token.operator {
+  background: none !important;
 }

@@ -6,6 +6,9 @@ import { highlight, languages } from 'prismjs';
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism.css";
+import { useContext } from "react-hook-tracer";
+import { ThemeContext } from "@/providers/ThemeProvider";
+import { Themes } from "@/types/theme";
 
 
 interface IAppCodeEditor {
@@ -16,7 +19,7 @@ export const AppCodeEditor: React.FC<IAppCodeEditor> = ({
   code,
   handleChangeCode,
 }) => {
-
+  const [theme, setTheme] = useContext(ThemeContext);
   return (
     <div>
       <Editor
@@ -28,10 +31,10 @@ export const AppCodeEditor: React.FC<IAppCodeEditor> = ({
         padding={15}
         style={{
           height: 'calc(100vh - 120px)',
-          color: '#232323',
+          color: theme === Themes.LIGHT ? '#232323' : 'white',
           overflow: 'auto',
           fontSize: 16,
-          backgroundColor: '#fefaf3',
+          backgroundColor: theme === Themes.LIGHT ? '#fefaf3' : '#000000',
           fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
           border: '3px solid #bb976d',
           borderRadius: 8,

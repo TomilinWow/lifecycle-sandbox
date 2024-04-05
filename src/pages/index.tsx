@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { PageLayout } from '@/components/layout'
 import { Main } from "@/components/Main/Main";
-import ErrorBoundary from "@/components/ErrorBoundary";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 export default function Home() {
   return (
@@ -12,9 +12,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <PageLayout>
-        <Main />
-      </PageLayout>
+      <ThemeProvider>
+        <PageLayout>
+          <Main />
+        </PageLayout>
+      </ThemeProvider>
     </>
   )
 }

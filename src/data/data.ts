@@ -5,7 +5,7 @@ export const strCounter = `
   const Counter = () => {
     const [value, setValue] = useState(0);
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', color: 'black'}}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', color: 'gray'}}>
         <h2>Counter</h2>
         <span>
           Value: {value}
@@ -49,7 +49,7 @@ export const strUserList = `
   const User = ({ name, deleteUser }) => {
     const [count, setCount] = useState(0)
     return (
-      <div style={{ display: 'flex', flexWrap: 'wrap', padding: '2px 6px 2px 6px',  backgroundColor: '#d9ff67', color: 'black'}}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', padding: '2px 6px 2px 6px',  backgroundColor: '#d9ff67', color: 'gray'}}>
         <div style={{
           display: 'flex',
           flexDirection: 'column',
@@ -70,7 +70,7 @@ export const strUserList = `
   }
 
   return (
-    <div style={{display: 'flex',  flexDirection: 'column', alignSelf: 'flex-start', padding: '2px 6px 4px 6px',  backgroundColor: '#eaf6c2', color: 'black'}}>
+    <div style={{display: 'flex',  flexDirection: 'column', alignSelf: 'flex-start', padding: '2px 6px 4px 6px',  backgroundColor: '#eaf6c2', color: 'gray'}}>
       <div style={{display: 'flex', flexWrap: 'wrap'}}>
         <div style={{display: 'flex',  flexDirection: 'column', margin: '2px'}}>
           <div>List</div>

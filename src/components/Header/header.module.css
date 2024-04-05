@@ -7,8 +7,28 @@
     align-items: center;
     height: 50px;
     font-family: Fahkwang;
+    position: relative;
 }
+.darkHeader {
+    background-color: #111417;
+}
+
 .headerText {
     color: aliceblue;
 
 }
+
+.button {
+    position: absolute;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: inherit;
+}
+
+.image {
+    width: 30px;
+    height: 30px;
+}
+

@@ -5,10 +5,12 @@ function reformatComponents(sourceStr: any) {
 
   let jsx = sourceStr;
   const pattern = /(const \w+ =\s*\(\s*[^)]*\)\s*=>\s*\{|function \w+\s*\(\s*[^)]*\)\s*\{)/;
-
+  const patternForName = /(?:const|function)\s+([A-Za-z0-9_]+)\s*(?:=\s*\(\)\s*=>|\()/;
   const componentsStringJsx: any[] = [];
 
   function processJsx(jsx: string) {
+    const matches = jsx.match(patternForName);
+    const componentName = matches ? matches[1] : 'Component';
     let modifiedJsx = jsx.replace(pattern, '{');
     const symbolsLeft = ['{', '('];
     const symbolsRight = ['}', ')'];
@@ -25,7 +27,7 @@ function reformatComponents(sourceStr: any) {
         let symbol = stack.pop();
         if (symbol === '{' && stack.length === 0) {
           const index = newStr.indexOf('{')
-          componentsStringJsx.push(`() => { \n${newStr.substring(index + 1)}`);
+          componentsStringJsx.push(`() => { \n const ${componentName} = () => { \n${newStr.substring(index + 1)}; \n return <${componentName}/> }`);
           newStr = '';
           break;
         }
@@ -36,8 +38,10 @@ function reformatComponents(sourceStr: any) {
   }
 
   while (jsx.match(pattern)) {
+
     jsx = processJsx(jsx);
   }
+  console.log(componentsStringJsx)
   return componentsStringJsx
 }
 
@@ -49,7 +53,8 @@ export function transformJSX(sourceJSX: string) {
 
   const insertString = `
   const {useState, useEffect, useRef, useMemo, useTracer, useContext, useReducer, TraceLog, useLayoutEffect, useInsertionEffect, useCallback} = window.globalHooks;
-  const { TracePanel } = useTracer();`;
+    const { TracePanel } = useTracer();
+  `;
 
   const componentRegex = /((const|function)\s+\w+\s*=\s*\((.*?)\)\s*=>\s*\{|function\s+\w+\s*\((.*?)\)\s*\{)/g;
   const updatedJsx = sourceJSX.replace(componentRegex, (match) => match + insertString);

@@ -7,7 +7,6 @@ import { TraceBlock } from "@/components/TraceBlock/TraceBlock";
 import { transformJSX } from "@/utils/transformJSX";
 import { TypeExamples } from "@/models/models";
 import { strCounter, strUserList } from "@/data/data";
-import ErrorBoundary from "../ErrorBoundary";
 
 export const Main = () => {
 
