@@ -1,4 +1,4 @@
-name: Deploy Next.js on Heroku
+name: Deploy Next.js on Render
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,45 +26,14 @@ jobs:
       - name: Run lint
         run: npm run lint
 
-      - name: Build Docker Image
-        run: docker build -t nextjs-docker:1.0 .
 
-#
-#  deploy:
-#    name: Deploy to Heroku
-#    needs: build
-#    if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || github.event_name == 'workflow_dispatch'
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#        with:
-#          persist-credentials: false
-#
-#      - name: Use Node.js
-#        uses: actions/setup-node@v2
-#        with:
-#          node-version: '20.9.0'
-#
-#      - name: Install dependencies
-#        run: npm install
-#
-#      - name: Build Docker Image
-#        run: docker-compose up --build -d
-#
-#      - name: Log in to the Heroku
-#        run: heroku container:login
-#        env:
-#          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-#
-#      - name: Tag and Push Docker Image to Heroku
-#        run: |
-#          docker tag nextjs-docker:1.0 registry.heroku.com/nextjs-docker/web
-#          docker push registry.heroku.com/nextjs-docker/web
-#        env:
-#          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-#
-#      - name: Release the Image to Heroku
-#        run: heroku container:release web -a nextjs-docker
-#        env:
-#          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  deploy:
+    name: Deploy Render.com
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
+          wait-for-success: true
