@@ -1,14 +1,13 @@
-name: Deploy Next.js on Render
+name: Deploy Next.js on VPS
 
 on:
   push:
-  pull_request:
-  workflow_dispatch:
-
+    branches:
+      - main
 
 jobs:
 
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,12 +27,17 @@ jobs:
 
 
   deploy:
-    name: Deploy Render.com
+    needs: lint
     runs-on: ubuntu-latest
+#    concurrency:
+#      group: lifecycle-sandbox
+#      cancel-in-progress: true
     steps:
-      - name: Deploy to production
-        uses: johnbeynon/render-deploy-action@v0.0.8
+      - name: SSH Command
+        uses: D3rHase/ssh-command-action@v0.2.2
         with:
-          service-id: ${{ secrets.SERVICE_ID }}
-          api-key: ${{ secrets.RENDER_API_KEY }}
-          wait-for-success: true
+          host: ${{ secrets.SSH_HOST }}
+          user: ${{ secrets.SSH_USERNAME }}
+          private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host_fingerprint: ${{ secrets.SSH_FINGERPRINT }}
+          command: source ~/.nvm/nvm.sh; echo 'hello'
