@@ -1,8 +1,6 @@
 // @ts-ignore
 import StringToReactComponent from "string-to-react-component";
 import React, { FC, useEffect } from "react";
-import { useLayoutEffect } from "react-hook-tracer";
-import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
 
 
 interface JsxRender {
