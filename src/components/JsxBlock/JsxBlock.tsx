@@ -9,10 +9,10 @@ interface IJsxBlock {
   jsxBlocks: string[]
 }
 export const JsxBlock: FC<IJsxBlock> = ({jsxBlocks}) => {
-  const [theme, setTheme] = useContext(ThemeContext);
+  const [theme] = useContext(ThemeContext);
 
   return <>
-    {!!jsxBlocks.length
+    {jsxBlocks.length > 0
       ? <>
         <div className={styles.codeBlock + (theme === Themes.DARK ? ' ' + styles.darkBlock : '')}>
           {
@@ -21,7 +21,7 @@ export const JsxBlock: FC<IJsxBlock> = ({jsxBlocks}) => {
         </div>
       </>
       : <div className={styles.emptyBlock + (theme === Themes.DARK ? ' ' + styles.darkBlock : '')}>
-        Content not available, write code and run it.
+        Content is not available, write code and run it.
       </div>
     }
   </>

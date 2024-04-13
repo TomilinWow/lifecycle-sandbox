@@ -1,14 +1,17 @@
 // @ts-ignore
 import StringToReactComponent from "string-to-react-component";
-import React, {Fragment} from "react";
-import {useLayoutEffect} from "react-hook-tracer";
+import React, { FC, useEffect } from "react";
+import { useLayoutEffect } from "react-hook-tracer";
+import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
 
 
-export const JsxRender = (props: any) => {
+interface JsxRender {
+  content: string
+}
+export const JsxRender: FC<JsxRender> = ({ content}) => {
   const [isScriptLoaded, setIsScriptLoaded] = React.useState(false);
 
-  useLayoutEffect(() => {
-   setTimeout(() => {
+  useEffect(() => {
      try{
        const script = document.createElement("script");
        script.src = "https://unpkg.com/@babel/standalone/babel.min.js";
@@ -16,17 +19,15 @@ export const JsxRender = (props: any) => {
        document.body.appendChild(script);
        script.onload = () => setIsScriptLoaded(true);
      } catch (e) {
-       console.log(e)
+       alert(e)
      }
-   }, 1000)
-  }, []);
+   }, []);
 
-  return (
-    <>
-      {isScriptLoaded && <StringToReactComponent>
-        {props.content}
-      </StringToReactComponent>
-      }
-    </>
+  return (<>
+        {isScriptLoaded && <StringToReactComponent>
+          {content}
+        </StringToReactComponent>
+        }
+      </>
   );
 };

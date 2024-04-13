@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, Context, ReactNode, FC } from 'react';
+import React, { createContext, useState, useEffect, ReactNode, FC } from 'react';
 import { Themes } from "@/types/theme";
 
 type IThemeContext = [Themes, React.Dispatch<React.SetStateAction<Themes>>];

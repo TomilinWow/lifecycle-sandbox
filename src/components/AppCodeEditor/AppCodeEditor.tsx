@@ -19,7 +19,7 @@ export const AppCodeEditor: React.FC<IAppCodeEditor> = ({
   code,
   handleChangeCode,
 }) => {
-  const [theme, setTheme] = useContext(ThemeContext);
+  const [theme] = useContext(ThemeContext);
   return (
     <div>
       <Editor
@@ -27,7 +27,7 @@ export const AppCodeEditor: React.FC<IAppCodeEditor> = ({
         value={code}
         onValueChange={value => handleChangeCode(value)}
         highlight={code => highlight(code, languages.js)}
-        placeholder={"Please enter JSX code."}
+        placeholder="Please enter JSX code."
         padding={15}
         style={{
           height: 'calc(100vh - 120px)',

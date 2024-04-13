@@ -2,7 +2,7 @@ import styles from "@//components/Header/header.module.css";
 import sun from '../../images/sun.svg'
 import sunWhite from '../../images/sun_white.svg'
 import Image from 'next/image'
-import { useContext, useMemo } from "react-hook-tracer";
+import { useContext } from "react-hook-tracer";
 import { ThemeContext } from "@/providers/ThemeProvider";
 import { useCallback } from "react";
 import { Themes } from "@/types/theme";
@@ -22,7 +22,7 @@ export const Header = () => {
       <Image
         className={styles.image}
         src={theme === Themes.LIGHT ? sun : sunWhite}
-        alt={'mode'}
+        alt="mode"
       />
     </button>
   </div>

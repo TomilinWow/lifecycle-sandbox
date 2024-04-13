@@ -39,14 +39,14 @@ export const Main = () => {
 
 
   return <div className={styles.wrapper}>
-    <div id='home-element' className={`${styles.column} ${styles.jsxColumn}`}>
+    <div id="home-element" className={`${styles.column} ${styles.jsxColumn}`}>
       <ControlPanel runCode={runCode} setSelectValue={onHandleChangeSelect}/>
       <AppCodeEditor code={code} handleChangeCode={handleChangeCode} />
     </div>
-    <div id='new' className={styles.column}>
+    <div id="new" className={styles.column}>
       <JsxBlock jsxBlocks={jsxBlocks}/>
     </div>
-    <div id='home-element' className={styles.column}>
+    <div id="home-element" className={styles.column}>
       <TraceBlock jsxBlocks={jsxBlocks}/>
     </div>
   </div>
